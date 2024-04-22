@@ -1,7 +1,7 @@
 
 import {Route, Routes} from 'react-router-dom'
-import Register from '../components/Register'
-import Login from '../components/Login';
+import Register from '../components/FormComponents/Register'
+import Login from '../components/FormComponents/Login';
 
 
 const Form = () => {

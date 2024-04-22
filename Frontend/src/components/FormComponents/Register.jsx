@@ -1,7 +1,6 @@
 import { Card, Flex, Typography, Form, Input, Button } from "antd";
 import { Link } from "react-router-dom";
-import registerImage from "../assets/image1.jpg";
-import GOOGLE_ICON from "../assets/google.png";
+// import GOOGLE_ICON from "../assets/FormAssests/google.png";
 
 const Register = () => {
   const handleRegister = (values) => {
@@ -17,7 +16,7 @@ const Register = () => {
           </Typography.Title>
           <Form layout="vertical" onFinish={handleRegister} autoComplete="off">
             <div className="w-full text-[#060606]  font-semibold bg-white my-2.5 border-2 border-bg-stone-500	 rounded-md p-1.5 text-center flex items-center justify-center cursor-pointer">
-              <img src={GOOGLE_ICON} className="h-6 mr-2" />
+              {/* <img src={GOOGLE_ICON} className="h-6 mr-2" /> */}
               <p>Sign Up with Google</p>
             </div>
             <div className="w-full flex items-center justify-center relative py-2">
@@ -123,7 +122,7 @@ const Register = () => {
             <Form.Item>
               <div className="my-4">
                 <img
-                  src={registerImage}
+                  // src={registerImage}
                   className="auth-image h-auto w-full rounded-lg"
                   alt="Register"
                 />
