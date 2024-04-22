@@ -29,7 +29,6 @@ function Navbar() {
           </li>
         </ul>
       </nav>
-      <Hero />
     </div>
   );
 }
