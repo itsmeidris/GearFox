@@ -6,9 +6,10 @@ import Details from "../components/LandingPageComponents/Details";
 function LandingPage() {
   return (
     <>
-      <Navbar />
+      <Navbar/>
     </>
   );
 }
 
 export default LandingPage;
+
