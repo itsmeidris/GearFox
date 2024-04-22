@@ -1,7 +1,8 @@
+
 import { Card, Flex, Typography, Form, Input, Button } from "antd";
 import { Link } from "react-router-dom";
-import LoginImage from "../../assets/image1.jpg";
-import GOOGLE_ICON from "../../assets/google.png";
+import LoginImage from "../assets/image1.jpg";
+import GOOGLE_ICON from "../assets/google.png";
 
 const Login = () => {
   const handleLogin = async (values) => {
@@ -103,7 +104,7 @@ const Login = () => {
             {/* Sign Up Link */}
             <Form.Item>
               <div style={{ marginBottom: "12px" }}>
-                <Link to="/sinup">
+                <Link to="/register">
                   Dont have an account?{" "}
                   <span className="text-teal-400 underline">Sign Up</span>
                 </Link>

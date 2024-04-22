@@ -1,7 +1,7 @@
 import { Card, Flex, Typography, Form, Input, Button } from "antd";
 import { Link } from "react-router-dom";
-import registerImage from "../../assets/image1.jpg";
-import GOOGLE_ICON from "../../assets/google.png";
+import registerImage from "../assets/image1.jpg";
+import GOOGLE_ICON from "../assets/google.png";
 
 const Register = () => {
   const handleRegister = (values) => {

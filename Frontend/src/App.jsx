@@ -1,14 +1,16 @@
-import {BrowserRouter as Router , Route, Routes} from 'react-router-dom'
+import {Route, Routes} from 'react-router-dom'
 import './App.css';
-import Form from './pages/Form/Form';
+import Form from './pages/Form.jsx';
 
 
 const App = () => {
-  return <Router>
-    <Routes>
-        <Route path='/' element={<Form/>} />
+  return(
+    <>
+      <Routes>
+        <Route path='*' element={<Form/>} />
       </Routes>
-    </Router>;
+    </>
+  );
 };
 
 export default App
