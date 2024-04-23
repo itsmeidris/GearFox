@@ -1,11 +1,74 @@
 import { Card, Flex, Typography, Form, Input, Button } from "antd";
-import { Link } from "react-router-dom";
+import axios from "axios";
+import { useState } from "react";
+import toast, { Toaster } from 'react-hot-toast';
+import { Link ,useNavigate } from "react-router-dom";
+// import { toast, ToastContainer } from "react-toastify";
 // import GOOGLE_ICON from "../assets/FormAssests/google.png";
 
+;
 const Register = () => {
   const handleRegister = (values) => {
     console.log(values);
   };
+
+  const navigate = useNavigate();
+  const [inputValue ,setInputValue] = useState({
+    email : "",
+    password : "",
+    username : ""
+  });
+  const {email ,password ,username} = inputValue;
+
+  const handleOnChange = (e) =>{
+    const {name ,value} = e.target;
+    setInputValue({
+      ...inputValue,
+      [name] : value
+    });
+  }
+
+  const handleError = (err) =>{
+    toast.error(err ,{
+        position : "bottom-left",
+    });
+}
+const handleSuccess = (msg) =>{
+    toast.success(msg ,{
+        position : "bottom-right",
+    });
+} 
+  
+  const handleSubmit = async (e) =>{
+    e.preventDefault();
+
+    try{
+      const {data} = await axios.post(
+        "http://localhost:3456/signup",
+        {...inputValue},
+        {withCredentials : true}
+      );
+
+      const {success ,message} = data;
+      if(success){
+        handleSuccess(message);
+        setTimeout(() =>{
+          navigate("/signin");
+        } ,2500);
+      }else{
+        handleError(message);
+      }
+    }catch(e){
+      console.log(`Error : ${e}`);
+    }
+    setInputValue({
+      ...inputValue,
+      email : "",
+      password : "",
+      username : ""
+    });
+    
+  }
   return (
     <Card className="form-container overflow-hidden">
       <Flex gap="large">
@@ -14,7 +77,11 @@ const Register = () => {
           <Typography.Title level={3} strong className="title text-center">
             Sign Up
           </Typography.Title>
-          <Form layout="vertical" onFinish={handleRegister} autoComplete="off">
+          <Form 
+          onSubmitCapture={handleSubmit}
+          layout="vertical" 
+          onFinish={handleRegister}
+          autoComplete="off">
             <div className="w-full text-[#060606]  font-semibold bg-white my-2.5 border-2 border-bg-stone-500	 rounded-md p-1.5 text-center flex items-center justify-center cursor-pointer">
               {/* <img src={GOOGLE_ICON} className="h-6 mr-2" /> */}
               <p>Sign Up with Google</p>
@@ -36,7 +103,13 @@ const Register = () => {
                 },
               ]}
             >
-              <Input size="large" placeholder="Enter your full name" />
+              <Input 
+              type="text"
+              name="username"
+              value={username}
+              onChange={handleOnChange}
+              size="large" 
+              placeholder="Enter your full name" />
             </Form.Item>
             <Form.Item
               label="Email"
@@ -53,7 +126,12 @@ const Register = () => {
                 },
               ]}
             >
-              <Input placeholder="Enter your email" />
+              <Input
+              type="email"
+              name="email"
+              value={email}
+              onChange={handleOnChange} 
+              placeholder="Enter your email" />
             </Form.Item>
             <Form.Item
               label="Password"
@@ -66,23 +144,13 @@ const Register = () => {
                 },
               ]}
             >
-              <Input.Password size="large" placeholder="Enter your password" />
-            </Form.Item>
-            <Form.Item
-              label="Confirm Password"
-              name="confirmPassword"
-              style={{ marginBottom: "10px" }}
-              rules={[
-                {
-                  required: true,
-                  message: "Please input your Confirm Password!",
-                },
-              ]}
-            >
-              <Input.Password
-                size="large"
-                placeholder="Enter your confirm password"
-              />
+              <Input.Password 
+              type="password"
+              name="password"
+              value={password}
+              onChange={handleOnChange}
+              size="large" 
+              placeholder="Enter your password" />
             </Form.Item>
             <div className="w-full flex items-start justify-start mt-[-0.15rem]">
               <input type="checkbox" className="w-4 h-4 mr-2 cursor-pointer" />
@@ -108,7 +176,7 @@ const Register = () => {
             </Form.Item>
             <Form.Item>
               <div style={{ marginBottom: "12px" }}>
-                <Link to="/login">
+                <Link to="/signin">
                   Already have an account?{" "}
                   <span className="text-teal-400	underline ">Sign In</span>
                 </Link>
@@ -131,7 +199,30 @@ const Register = () => {
           </>
         </Flex>
       </Flex>
-    </Card>
+      <Toaster
+      position="top-center"
+      reverseOrder={false}
+      gutter={8}
+      containerClassName=""
+      containerStyle={{}}
+      toastOptions={{
+        // Define default options
+        className: '',
+        duration: 3000,
+        style: {
+          background: '#363636',
+          color: '#fff',
+        },
+        // Default options for specific types
+        success: {
+          duration: 3000,
+          theme: {
+            primary: 'green',
+            secondary: 'black',
+          },
+        },
+      }}/>    
+      </Card>
   );
 };
 

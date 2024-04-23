@@ -7,6 +7,7 @@ function LandingPage() {
   return (
     <>
       <Navbar/>
+      <Hero/>
     </>
   );
 }

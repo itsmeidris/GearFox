@@ -1,1 +1,0 @@
-//Define the necessary fields (name ,email ,password ,role)

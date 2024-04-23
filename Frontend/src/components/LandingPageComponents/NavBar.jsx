@@ -4,7 +4,7 @@ import Hero from "./Hero";
 
 function Navbar() {
   return (
-    <div className=" bg-cover bg-center h-screen bg-image text-gray-50">
+    <div className=" bg-cover bg-center h-screen bg-image text-black">
       <nav className="flex justify-between mx-12 py-9 border-b-2  pb-8 ">
         <h1 className="text-3xl">GearFox</h1>
         <ul className="flex gap-12 mt-3 ">
@@ -23,9 +23,11 @@ function Navbar() {
             <p>Contact</p>
           </li>
           <li>
-            <a href="signup" className=" border-2  rounded-full py-3 px-10">
+            <Link to='/signin'>
+            <a href="" className=" border-2  rounded-full py-3 px-10">
               Login
             </a>
+            </Link>
           </li>
         </ul>
       </nav>
