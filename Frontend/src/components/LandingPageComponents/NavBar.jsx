@@ -1,10 +1,9 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import Hero from "./Hero";
 
 function Navbar() {
   return (
-    <div className=" bg-cover bg-center h-screen bg-image text-black">
+    <div className=" bg-cover bg-center   text-black">
       <nav className="flex justify-between mx-12 py-9 border-b-2  pb-8 ">
         <h1 className="text-3xl">GearFox</h1>
         <ul className="flex gap-12 mt-3 ">
@@ -23,10 +22,10 @@ function Navbar() {
             <p>Contact</p>
           </li>
           <li>
-            <Link to='/signin'>
-            <a href="" className=" border-2  rounded-full py-3 px-10">
-              Login
-            </a>
+            <Link to="/signin">
+              <a href="" className=" border-2  rounded-full py-3 px-10">
+                Login
+              </a>
             </Link>
           </li>
         </ul>
