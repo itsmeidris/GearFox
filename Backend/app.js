@@ -4,10 +4,12 @@ require("dotenv").config();
 const cookieParser = require("cookie-parser");
 const connectToDatabase = require('./config/databaseConnection');
 const router = require('./routes/userRoutes');
+const {seedAdminUsers} = require('./dataAdmins/adminUsers');
+const adminRouter = require('./routes/adminRoutes');
 const app = express();
 
 connectToDatabase();
-
+seedAdminUsers();
 
 const PORT = process.env.PORT || 3000;
 app.listen(PORT ,() =>{
@@ -26,4 +28,6 @@ app.use(cookieParser());
 app.use(express.json());
 
 app.use('/' ,router);
+app.use('/' ,adminRouter);
+
 

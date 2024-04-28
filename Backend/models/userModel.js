@@ -21,11 +21,15 @@ const userSchema = new mongoose.Schema({
       type: Date,
       default: new Date(),
     },
-
+    isAdmin : {
+      type : Boolean,
+      default : false,
+      required : false
+    }
 });
 
 userSchema.pre("save", async function () {
     this.password = await bcrypt.hash(this.password, 12);
 });
 
-module.exports = mongoose.model("User" ,userSchema);
+module.exports = mongoose.model("User" ,userSchema ,"Users");

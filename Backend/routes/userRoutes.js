@@ -6,6 +6,5 @@ const router = require("express").Router();
 router.post("/signup" ,signUp);
 router.post("/signin" ,signIn);
 router.post("/" ,userVerification);
-// router.get('/' ,home);
 
 module.exports = router;
