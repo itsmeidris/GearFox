@@ -1,7 +1,7 @@
 
 import { Card, Flex, Typography, Form, Input, Button } from "antd";
 import axios from "axios";
-import { useState } from "react";
+import { useState ,useEffect} from "react";
 import toast, { Toaster } from 'react-hot-toast';
 import { Link ,useNavigate} from "react-router-dom";
 
@@ -46,17 +46,31 @@ const Login = () => {
         },
         { withCredentials: true }
       );
-      console.log(data);
-      const { success, message } = data;
+
+      const {success, message, isAdmin} = data;
+
       if (success) {
-        handleSuccess(message);
-        setTimeout(() => {
-          navigate("/");
-        }, 3000);
+        if (isAdmin) {
+          setTimeout(() => {
+            navigate("/dashboard");
+          }, 3000);
+          handleSuccess(message);
+          console.log("Redirecting to admin dashboard");
+          console.log(isAdmin);
+        } 
+        else {
+          setTimeout(() => {
+            navigate("/");
+          }, 3000);
+          handleSuccess(message);
+          console.log("Redirecting to main");
+        }
       } else {
         handleError(message);
       }
-    } catch (error) {
+      console.log(data);
+        
+    }catch (error) {
       console.log(error);
     }
     setInputValue({
