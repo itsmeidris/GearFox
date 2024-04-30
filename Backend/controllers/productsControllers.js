@@ -48,26 +48,57 @@ const createProduct = async (req, res) => {
 
 // Update a product
 
+// const updateProduct = async (req, res) => {
+//   const { error } = validateUpdateProduct(req.body);
+
+//   if (error) {
+//     return res.status(400).json({ message: error.details[0].message });
+//   }
+
+//   const updateProduct = await Product.findByIdAndUpdate(
+//     req.params.id,
+//     {
+//       $set: {
+//         image: req.body.image,
+//         name: req.body.name,
+//         description: req.body.description,
+//         price: req.body.price,
+//       }
+//     },
+//     { new: true }
+//   );
+//   res.status(200).json(updateProduct);
+// };
+
 const updateProduct = async (req, res) => {
-  const { error } = validateUpdateProduct(req.body);
+  try {
+    const { error } = validateUpdateProduct(req.body);
+    if (error) {
+      return res.status(400).json({ message: error.details[0].message });
+    }
 
-  if (error) {
-    return res.status(400).json({ message: error.details[0].message });
-  }
-
-  const updateProduct = await Product.findByIdAndUpdate(
-    req.params.id,
-    {
-      $set: {
-        image: req.body.image,
-        name: req.body.name,
-        description: req.body.description,
-        price: req.body.price,
+    const productId = req.params.id;
+    const updatedProduct = await Product.findByIdAndUpdate(
+      productId,
+      {
+        $set: {
+          image: req.body.image,
+          name: req.body.name,
+          description: req.body.description,
+          price: req.body.price,
+        },
       },
-    },
-    { new: true }
-  );
-  res.status(200).json(updateProduct);
+      { new: true }
+    );
+
+    if (!updatedProduct) {
+      return res.status(404).json({ message: "Product not found" });
+    }
+
+    res.status(200).json(updatedProduct);
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
 };
 
 // Patch

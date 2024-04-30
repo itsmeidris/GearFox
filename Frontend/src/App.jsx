@@ -13,7 +13,9 @@ function App() {
         <Route path="/" element={<LandingPage />} />
         <Route path="/signin" element={<Login />} />
         <Route path="/signup" element={<Register />} />
+        <Route path="/product" element={<Products />} />
         <Route path="/test" element={<TestProduct />} />
+
       </Routes>
     </>
   );

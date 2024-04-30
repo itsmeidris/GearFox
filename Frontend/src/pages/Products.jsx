@@ -35,12 +35,12 @@ function Products() {
     }
   };
 
-  const [formData, setFormData] = useState({
-    name: "",
-    description: "",
-    image: "",
-    price: 0,
-  });
+  // const [formData, setFormData] = useState({
+  //   name: "",
+  //   description: "",
+  //   image: "",
+  //   price: 0,
+  // });
   const handleChange = (e) => {
     setFormData({
       ...formData,
@@ -48,17 +48,17 @@ function Products() {
     });
   };
 
-  // const postProduct = async (e) => {
-  //   e.preventDefault();
-  //   try {
-  //     await axios.post("http://localhost:5454/products", formData);
-  //     console.log("Product added successfully");
+  const postProduct = async (e) => {
+    e.preventDefault();
+    try {
+      await axios.post("http://localhost:5454/products", formData);
+      console.log("Product added successfully");
 
-  //     setFormData({ name: "", description: "", image: "", price: 0 });
-  //   } catch (error) {
-  //     console.log("Error", error);
-  //   }
-  // };
+      setFormData({ name: "", description: "", image: "", price: 0 });
+    } catch (error) {
+      console.log("Error", error);
+    }
+  };
 
   // Update
 
@@ -70,6 +70,13 @@ function Products() {
   //     price: product.price,
   //   });
   // };
+
+  const [formData, setFormData] = useState({
+    name: "",
+    description: "",
+    image: "",
+    price: 0,
+  });
 
   const [isEditing, setIsEditing] = useState(false);
   const [editingProduct, setEditingProduct] = useState(null);
@@ -86,17 +93,14 @@ function Products() {
   };
   const handleEditChange = (e) => {
     const { name, value } = e.target;
+
     setEditingProduct((pervProduct) => ({
       ...pervProduct,
 
       [name]: value,
     }));
   };
-  const handleUpdate = async (e) => {
-    e.preventDefault();
-    await updateProduct(editingProduct._id, editingProduct);
-    setIsEditing(true);
-  };
+
   const updateProduct = async (productId, updateProductData) => {
     try {
       await axios.put(
@@ -108,39 +112,69 @@ function Products() {
       console.error("Error", error);
     }
   };
-
-  const [searchTerm, setSearchTerm] = useState("");
-  const [searchResults, setSearchResults] = useState([]);
-
-  const handleSearchChange = (e) => {
-    setSearchTerm(e.target.value);
+  const handleUpdate = async (e) => {
+    e.preventDefault();
+    console.log("Updating product:", editingProduct);
+    await updateProduct(editingProduct._id, {
+      name: editingProduct.name,
+      description: editingProduct.description,
+      price: editingProduct.price,
+    });
+    setIsEditing(true);
   };
-  const handleSearch = async () => {
-    try {
-      const res = await axios.get(`/products?search=${searchTerm}`);
-      setSearchResults(res.data);
-    } catch (error) {
-      console.error("Error searching products:", error);
+
+  // const [searchTerm, setSearchTerm] = useState("");
+  // const [searchResults, setSearchResults] = useState([]);
+
+  // const handleSearchChange = (e) => {
+  //   setSearchTerm(e.target.value);
+  // };
+  // const handleSearch = async () => {
+  //   try {
+  //     const res = await axios.get(`/products?search=${searchTerm}`);
+  //     setSearchResults(res.data);
+  //   } catch (error) {
+  //     console.error("Error searching products:", error);
+  //   }
+  // };
+  const [searchUser, setSearchUser] = useState("");
+  const handleSearchChange = (e) => {
+    setSearchUser(e.target.value);
+  };
+
+  const handleSearchClick = () => {
+    if (searchUser !== "") {
+      const usersFiltered = users.filter((user) => {
+        return (
+          user.username.toLowerCase().includes(searchUser.toLowerCase()) ||
+          user.email.toLowerCase().includes(searchUser.toLowerCase())
+        );
+      });
+      setFilteredUsers(usersFiltered);
+    } else {
+      setFilteredUsers(users); // Reset filtered users to all users when search input is empty
     }
   };
 
   return (
     <>
-      <h1 className="flex justify-center my-4"> Product M </h1>
-
-      <input
-        className="  border-2 border-black my-4 py-2 px-4"
-        type="text"
-        placeholder="Search products"
-        value={searchTerm}
-        onChange={handleSearchChange}
-      />
-      <button onClick={handleSearch}>Search</button>
-      <ul>
-        {searchResults.map((product) => (
-          <li key={product._id}>{product.name}</li>
-        ))}
-      </ul>
+      <h1 className="flex justify-center my-4"> Product Management </h1>
+      <div className="p-4">
+        <input
+          type="text"
+          placeholder="Search by name"
+          value={searchUser}
+          onChange={handleSearchChange}
+          className="px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-blue-500"
+        />
+        <button
+          className="px-4 py-2 ml-2 border border-gray-300 bg-blue-600 text-white rounded-md focus:outline-none "
+          onClick={handleSearchClick}
+        >
+          Search
+        </button>
+      </div>
+    
       <Card className="h-full w-full overflow-scroll">
         <table className="w-full min-w-max table-auto text-left">
           <thead>
@@ -162,6 +196,7 @@ function Products() {
             </tr>
           </thead>
           <tbody>
+            
             {products.map((product, index) => {
               const isLast = index === products.length - 1;
               const classes = isLast
@@ -226,7 +261,7 @@ function Products() {
 
       {/* -------------------------- */}
 
-      {/* <h1 className="flex justify-center my-8"> Add product </h1>
+      <h1 className="flex justify-center my-8"> Add product </h1>
       <form onSubmit={postProduct}>
         <label>
           Product image :
@@ -269,7 +304,7 @@ function Products() {
         </label>
         <br />
         <button type="submit">Add Product</button>
-      </form> */}
+      </form>
 
       {/* ----------------------------- */}
       <div>
