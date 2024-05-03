@@ -17,8 +17,11 @@ const productSchema = new mongoose.Schema({
   price: {
     type: Number,
     required: true,
-  }
-  
+  },
+  category: {
+    type: String,
+    required: true,
+  },
 });
 const Product = mongoose.model("Product", productSchema, "Products");
 
@@ -29,6 +32,7 @@ function validateCreateProduct(obj) {
     name: Joi.string().required(),
     description: Joi.string().min(7).required(),
     price: Joi.number().min(0).required(),
+    category: Joi.string().required(),
   });
   return schema.validate(obj);
 }
@@ -40,6 +44,7 @@ function validateUpdateProduct(obj) {
     name: Joi.string(),
     description: Joi.string().min(7),
     price: Joi.number(),
+    category: Joi.string(),
   });
   return schema.validate(obj);
 }

@@ -10,7 +10,8 @@ function TestProduct() {
   const getProductData = async () => {
     try {
       const res = await axios.get("http://localhost:5454/products");
-      if (res.status === 200) { // Corrected status check from 201 to 200
+      if (res.status === 200) {
+        // Corrected status check from 201 to 200
         setProducts(res.data);
       }
     } catch (e) {
@@ -57,7 +58,8 @@ function TestProduct() {
 
   return (
     <>
-      <h1 className="flex justify-center my-4"> Product M </h1>
+    
+      <h1 className="flex justify-center my-4"> Product Management </h1>
       <Card className="h-full w-full overflow-scroll">
         <table className="w-full min-w-max table-auto text-left">
           {/* Table headers */}
@@ -68,7 +70,9 @@ function TestProduct() {
               {/* Table cells */}
               <td>
                 <button onClick={() => handleEdit(product)}>Edit</button>
-                <button onClick={() => deleteProduct(product._id)}>Delete</button>
+                <button onClick={() => deleteProduct(product._id)}>
+                  Delete
+                </button>
               </td>
             </tr>
           ))}
@@ -91,6 +95,7 @@ function TestProduct() {
               placeholder="Description"
               value={editingProduct.description}
               onChange={handleEditChange}
+
             />
             <input
               name="price"

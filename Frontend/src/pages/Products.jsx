@@ -75,6 +75,7 @@ function Products() {
     name: "",
     description: "",
     image: "",
+    category: "",
     price: 0,
   });
 
@@ -87,6 +88,7 @@ function Products() {
       name: product.name,
       description: product.description,
       price: product.price,
+      category: product.category,
     });
     setIsEditing(true);
     setEditingProduct(product);
@@ -119,47 +121,34 @@ function Products() {
       name: editingProduct.name,
       description: editingProduct.description,
       price: editingProduct.price,
+      category: editingProduct.category,
     });
     setIsEditing(true);
   };
 
-  // const [searchTerm, setSearchTerm] = useState("");
-  // const [searchResults, setSearchResults] = useState([]);
-
+  // const [searchUser, setSearchUser] = useState("");
   // const handleSearchChange = (e) => {
-  //   setSearchTerm(e.target.value);
+  //   setSearchUser(e.target.value);
   // };
-  // const handleSearch = async () => {
-  //   try {
-  //     const res = await axios.get(`/products?search=${searchTerm}`);
-  //     setSearchResults(res.data);
-  //   } catch (error) {
-  //     console.error("Error searching products:", error);
+
+  // const handleSearchClick = () => {
+  //   if (searchUser !== "") {
+  //     const usersFiltered = users.filter((user) => {
+  //       return (
+  //         product.product.toLowerCase().includes(searchUser.toLowerCase()) ||
+  //         user.email.toLowerCase().includes(searchUser.toLowerCase())
+  //       );
+  //     });
+  //     setFilteredUsers(usersFiltered);
+  //   } else {
+  //     setFilteredUsers(users); // Reset filtered users to all users when search input is empty
   //   }
   // };
-  const [searchUser, setSearchUser] = useState("");
-  const handleSearchChange = (e) => {
-    setSearchUser(e.target.value);
-  };
-
-  const handleSearchClick = () => {
-    if (searchUser !== "") {
-      const usersFiltered = users.filter((user) => {
-        return (
-          user.username.toLowerCase().includes(searchUser.toLowerCase()) ||
-          user.email.toLowerCase().includes(searchUser.toLowerCase())
-        );
-      });
-      setFilteredUsers(usersFiltered);
-    } else {
-      setFilteredUsers(users); // Reset filtered users to all users when search input is empty
-    }
-  };
 
   return (
     <>
       <h1 className="flex justify-center my-4"> Product Management </h1>
-      <div className="p-4">
+      {/* <div className="p-4">
         <input
           type="text"
           placeholder="Search by name"
@@ -173,8 +162,14 @@ function Products() {
         >
           Search
         </button>
+      </div> */}
+      <div>
+        <button className="text-white bg-gradient-to-r from-cyan-500 to-blue-500 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-cyan-300 dark:focus:ring-cyan-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2">
+          {" "}
+          Add{" "}
+        </button>
       </div>
-    
+
       <Card className="h-full w-full overflow-scroll">
         <table className="w-full min-w-max table-auto text-left">
           <thead>
@@ -196,7 +191,6 @@ function Products() {
             </tr>
           </thead>
           <tbody>
-            
             {products.map((product, index) => {
               const isLast = index === products.length - 1;
               const classes = isLast
@@ -293,15 +287,26 @@ function Products() {
           />
         </label>
         <br />
-        <label>
-          Product Price :
-          <input
-            name="price"
-            placeholder="price"
-            value={formData.price}
-            onChange={handleChange}
-          />
-        </label>
+        <label>Product Price :</label>
+        <input
+          name="price"
+          placeholder="price"
+          value={formData.price}
+          onChange={handleChange}
+        />
+        <br />
+        <label>Select Product :</label>
+        <select
+          name="category"
+          id="product"
+          value={formData.category}
+          onChange={handleChange}
+        >
+          <option>Jacket</option>
+          <option>Helmet</option>
+          <option>Boots</option>
+          <option>Gloves</option>
+        </select>
         <br />
         <button type="submit">Add Product</button>
       </form>
@@ -311,6 +316,7 @@ function Products() {
         {isEditing && (
           <form onSubmit={handleUpdate}>
             <h1 className="flex justify-center my-12">Update Product </h1>
+            <label>Image :</label>
             <input
               name="image"
               placeholder="image"
@@ -318,28 +324,31 @@ function Products() {
               onChange={handleEditChange}
             />
             <br />
+            <label>Name :</label>
             <input
               name="name"
-              placeholder="name"
               value={editingProduct.name}
               onChange={handleEditChange}
             />
             <br />
+            <label>Description :</label>
             <input
               name="description"
-              placeholder="description"
               value={editingProduct.description}
               onChange={handleEditChange}
             />
             <br />
+            <label>Price :</label>
             <input
               name="price"
-              placeholder="price"
               value={editingProduct.price}
               onChange={handleEditChange}
             />
             <br />
-            <button type="submit"> Update Product</button> <br />
+
+            <br />
+            <button type="submit"> Update Product</button>
+            <br />
             <button onClick={() => setIsEditing(false)}> Cancel</button>
           </form>
         )}

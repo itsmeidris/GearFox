@@ -41,6 +41,7 @@ const createProduct = async (req, res) => {
     name: req.body.name,
     description: req.body.description,
     price: req.body.price,
+    category: req.body.category,
   });
   const result = await product.save();
   res.status(201).json(result);
@@ -86,6 +87,7 @@ const updateProduct = async (req, res) => {
           name: req.body.name,
           description: req.body.description,
           price: req.body.price,
+          category: req.body.category,
         },
       },
       { new: true }
@@ -117,6 +119,7 @@ const patchProduct = async (req, res) => {
         name: req.body.name,
         description: req.body.description,
         price: req.body.price,
+        category: req.body.category,
       },
     },
     { new: true }
