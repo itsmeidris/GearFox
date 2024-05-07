@@ -2,6 +2,7 @@ import axios from "axios";
 import { useState, useEffect } from "react";
 import { Card, Typography } from "@material-tailwind/react";
 import { Axios } from "axios";
+import Uploader from "../components/Uploader";
 function Products() {
   const Products = ["Product", "Description", "Price", "Delete"];
   const [products, setProducts] = useState([]);
@@ -353,6 +354,8 @@ function Products() {
           </form>
         )}
       </div>
+
+      <Uploader />
     </>
   );
 }
