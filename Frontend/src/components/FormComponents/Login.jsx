@@ -1,9 +1,8 @@
-
 import { Card, Flex, Typography, Form, Input, Button } from "antd";
 import axios from "axios";
 import { useState } from "react";
-import toast, { Toaster } from 'react-hot-toast';
-import { Link ,useNavigate} from "react-router-dom";
+import toast, { Toaster } from "react-hot-toast";
+import { Link, useNavigate } from "react-router-dom";
 
 // import LoginImage from "../assets/image1.jpg";
 // import GOOGLE_ICON from "../assets/google.png";
@@ -40,7 +39,7 @@ const Login = () => {
 
     try {
       const { data } = await axios.post(
-        "http://localhost:3456/signin",
+        "http://localhost:3000/signin",
         {
           ...inputValue,
         },
@@ -71,7 +70,7 @@ const Login = () => {
         {/* Image */}
         <div className="my-4" style={{ flex: "0 0 50%" }}>
           <img
-            // src={LoginImage}
+            src="../src/assets/FormAssets/image1.jpg"
             className="auth-image h-auto w-full rounded-lg"
             alt="Login"
           />
@@ -89,14 +88,15 @@ const Login = () => {
           <Typography.Title level={3} strong className="title text-center">
             Sign In
           </Typography.Title>
-          <Form 
-          onSubmitCapture={handleSubmit}
-          layout="vertical" 
-          onFinish={handleLogin} 
-          autoComplete="off">
+          <Form
+            onSubmitCapture={handleSubmit}
+            layout="vertical"
+            onFinish={handleLogin}
+            autoComplete="off"
+          >
             {/* Form content */}
             <div className="w-full text-[#060606] font-semibold bg-white my-2.5 border-2 border-bg-stone-500 rounded-md p-1.5 text-center flex items-center justify-center cursor-pointer">
-              {/* <img src={GOOGLE_ICON} className="h-6 mr-2" alt="Google Icon" /> */}
+               <img src="../src/assets/FormAssets/google.png" className="h-6 mr-2" alt="Google Icon" /> 
               <p>Sign In with Google</p>
             </div>
             <div className="w-full flex items-center justify-center relative py-2">
@@ -121,12 +121,13 @@ const Login = () => {
                 },
               ]}
             >
-              <Input 
-              type="email"
-              name="email"
-              value={email}
-              onChange={handleOnChange}
-              placeholder="Enter your email" />
+              <Input
+                type="email"
+                name="email"
+                value={email}
+                onChange={handleOnChange}
+                placeholder="Enter your email"
+              />
             </Form.Item>
             {/* Password */}
             <Form.Item
@@ -140,13 +141,14 @@ const Login = () => {
                 },
               ]}
             >
-              <Input.Password 
-              type="password"
-              name="password"
-              value={password}
-              onChange={handleOnChange}
-              size="large" 
-              placeholder="Enter your password" />
+              <Input.Password
+                type="password"
+                name="password"
+                value={password}
+                onChange={handleOnChange}
+                size="large"
+                placeholder="Enter your password"
+              />
             </Form.Item>
             {/* Remember Me */}
             <div className="w-full flex items-start justify-start mt-[-0.15rem]">
@@ -186,28 +188,29 @@ const Login = () => {
         </Flex>
       </Flex>
       <Toaster
-      position="top-center"
-      reverseOrder={false}
-      gutter={8}
-      containerClassName=""
-      containerStyle={{}}
-      toastOptions={{
-        // Define default options
-        className: '',
-        duration: 3000,
-        style: {
-          background: '#363636',
-          color: '#fff',
-        },
-        // Default options for specific types
-        success: {
+        position="top-center"
+        reverseOrder={false}
+        gutter={8}
+        containerClassName=""
+        containerStyle={{}}
+        toastOptions={{
+          // Define default options
+          className: "",
           duration: 3000,
-          theme: {
-            primary: 'green',
-            secondary: 'black',
+          style: {
+            background: "#363636",
+            color: "#fff",
           },
-        },
-      }}/>
+          // Default options for specific types
+          success: {
+            duration: 3000,
+            theme: {
+              primary: "green",
+              secondary: "black",
+            },
+          },
+        }}
+      />
     </Card>
   );
 };

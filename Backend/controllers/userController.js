@@ -5,16 +5,16 @@ const createSecretToken = require('../utils/secretToken');
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 
-const signUp = async (req, res, next) => {
+const signUp = async (req, res) => {
   try {
-    const { email, password, username, createdAt } = req.body;
+    const { email, password, username, createdAt} = req.body;
     const existingUser = await userModel.findOne({ email });
 
     if (existingUser) {
       return res.json({ message: "User already exists." });
     }
 
-    const user = await userModel.create({ email, password, username, createdAt });
+    const user = await userModel.create({ email, password, username, createdAt});
     const token = createSecretToken(user._id);
     
     bcrypt.hash(password, 10, (err, hash) => {
@@ -31,9 +31,8 @@ const signUp = async (req, res, next) => {
       httpOnly: false,
     });
     res.status(201).json({
-      message: "User signed in successfully",
+      message: "User signed up successfully",
       success: true,
-      user
     });
 
   } catch (e) {
@@ -44,7 +43,7 @@ const signUp = async (req, res, next) => {
 const signIn = async (req ,res) =>{
   try{
       const {email ,password} = req.body;
-      if(!email || !password){
+      if(email === "" || password === ""){
           return res.json({message : "All fileds are required"});
       }
 
@@ -54,18 +53,27 @@ const signIn = async (req ,res) =>{
       }
 
       const auth = await bcrypt.compare(password ,user.password);
-      if(auth){
+      if(!auth){
           return res.json({message:'Incorrect password or email' });
       }
 
+      const isAdmin = user.isAdmin;
+      if(isAdmin){
+        return res.status(201).json({
+          message : `Welcome Admin ${user.username}`,
+          success : true,
+          isAdmin :true
+        });
+      }
       const token = createSecretToken(user._id);
       res.cookie("token", token, {
           withCredentials: true,
           httpOnly: false,
       });
-        res.status(201).json({ 
-          message: "User logged in successfully", 
-          success: true 
+      res.status(201).json({ 
+          message: `Welcome ${user.username}`, 
+          success: true,
+          isAdmin :false
       });
 
   }catch(e){
