@@ -1,10 +1,14 @@
+// package
 const express = require("express");
-const cors = require("cors");
 require("dotenv").config();
 const cookieParser = require("cookie-parser");
+const path = require("path");
+
+//utils
 const connectToDatabase = require("./config/databaseConnection");
-const router = require("./routes/userRoutes");
-const Product = require("./routes/productsRoutes");
+const cors = require("cors");
+const userRoutes = require("./routes/userRoute");
+
 const app = express();
 
 connectToDatabase();
@@ -14,15 +18,8 @@ app.listen(PORT, () => {
   console.log(`Server is listening on http://localhost:${PORT}`);
 });
 
-app.use(
-  cors({
-    origin: [`http://localhost:5173`],
-    methods: ["GET", "POST", "PUT", "DELETE"],
-    credentials: true,
-  })
-);
+app.use("/api/users", userRoutes);
+
 app.use(cookieParser());
 app.use(express.json());
-
-app.use("/", router);
-app.use("/", Product);
+app.use(express.urlencoded({ extended: true }));

@@ -1,29 +1,29 @@
-//Define the necessary fields (name ,email ,password ,role)
-
 const mongoose = require("mongoose");
-const bcrypt = require("bcrypt");
 
-const userSchema = new mongoose.Schema({
-  email: {
-    type: String,
-    required: [true, "Your email address is required"],
+const userSchema = mongoose.Schema(
+  {
+    username: {
+      type: String,
+      required: true,
+    },
+    email: {
+      type: String,
+      required: true,
+      unique: true,
+    },
+    password: {
+      type: String,
+      required: true,
+    },
+    isAdmin: {
+      type: Boolean,
+      required: true,
+      default: false,
+    },
   },
-  username: {
-    type: String,
-    required: [true, "Your username is required"],
-  },
-  password: {
-    type: String,
-    required: [true, "Your password is required"],
-  },
-  createdAt: {
-    type: Date,
-    default: new Date(),
-  },
-});
+  { timestamps: true }
+);
 
-userSchema.pre("save", async function () {
-  this.password = await bcrypt.hash(this.password, 12);
-});
+const User = mongoose.model("User", userSchema);
 
-module.exports = mongoose.model("User", userSchema);
+module.exports = User;
