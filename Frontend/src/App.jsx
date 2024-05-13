@@ -1,6 +1,6 @@
 import { Route, Routes} from 'react-router-dom';
 import './App.css';
-import LandingPage from './pages/LandingPage';
+import LandingPage from './layouts/LandingPage';
 import Register from './components/FormComponents/Register';
 import Login from './components/FormComponents/Login';
 import AdminDashboard from './components/AdminComponents/AdminDashboard';

@@ -2,3 +2,33 @@
 @tailwind components;
 @tailwind utilities;
 
+@font-face {
+  font-family: 'chillax';
+  src: url('/Chillax_Complete/Fonts/WEB/fonts/Chillax-Variable.woff2') format('woff2'),
+       url('') format('woff'),
+       url('/Chillax_Complete/Fonts/TTF/Chillax-Variable.ttf') format('truetype');
+  font-weight: 200 700;
+  font-display: swap;
+  font-style: normal;
+}
+
+@font-face {
+    font-family: 'panchang';
+    src: url('/Panchang_Complete/Fonts/WEB/fonts/Panchang-Variable.woff2') format('woff2'),
+         url('') format('woff'),
+         url('/Panchang_Complete/Fonts/TTF/Panchang-Variable.ttf') format('truetype');
+    font-weight: 200 700;
+    font-display: swap;
+    font-style: normal;
+  }
+  
+.no-visible-scrollbar {
+     scrollbar-width: none;
+     -ms-overflow-style: none;
+     -webkit-overflow-scrolling: touch;
+}
+   
+.no-visible-scrollbar::-webkit-scrollbar {
+     display: none;
+}
+   

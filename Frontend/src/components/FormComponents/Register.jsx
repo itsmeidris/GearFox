@@ -3,10 +3,7 @@ import axios from "axios";
 import { useState } from "react";
 import toast, { Toaster } from 'react-hot-toast';
 import { Link ,useNavigate } from "react-router-dom";
-// import { toast, ToastContainer } from "react-toastify";
-// import GOOGLE_ICON from "../assets/FormAssests/google.png";
 
-;
 const Register = () => {
   const handleRegister = (values) => {
     console.log(values);
@@ -16,16 +13,24 @@ const Register = () => {
   const [inputValue ,setInputValue] = useState({
     email : "",
     password : "",
-    username : ""
+    username : "",
+    profilePic : null
   });
-  const {email ,password ,username} = inputValue;
+  const {email ,password ,username ,profilePic} = inputValue;
 
   const handleOnChange = (e) =>{
-    const {name ,value} = e.target;
-    setInputValue({
-      ...inputValue,
-      [name] : value
-    });
+    const {name ,value ,files} = e.target;
+    if(name === 'profilePic'){
+      setInputValue({
+        ...inputValue,
+        [name] : files[0]
+      });
+    }else{
+      setInputValue({
+        ...inputValue,
+        [name]: value,
+      });  
+    }
   }
 
   const handleError = (err) =>{
@@ -42,11 +47,24 @@ const handleSuccess = (msg) =>{
   const handleSubmit = async (e) =>{
     e.preventDefault();
 
+    const formData = new FormData();
+    formData.append('email', email);
+    formData.append('password',  password);
+    formData.append('username', username);
+    formData.append('profilePic', profilePic);
+    
     try{
       const {data} = await axios.post(
         "http://localhost:3456/signup",
-        {...inputValue},
-        {withCredentials : true}
+        // {...inputValue},
+        // {withCredentials : true}
+        formData,
+        {
+          headers: {
+            "Content-Type" : 'multipart/form-data'
+          },
+          withCredentials : true
+        }
       );
 
       const {success ,message} = data;
@@ -65,7 +83,8 @@ const handleSuccess = (msg) =>{
       ...inputValue,
       email : "",
       password : "",
-      username : ""
+      username : "",
+      profilePic : null
     });
     
   }
@@ -152,6 +171,25 @@ const handleSuccess = (msg) =>{
               size="large" 
               placeholder="Enter your password" />
             </Form.Item>
+            <Form.Item
+            label="Profile Picture"
+            name="profilePic"
+            style={{ marginBottom: "10px" }}
+            rules={[
+              {
+                required: true,
+                message: "Please upload your profile picture!",
+              },
+            ]}>
+              <Input
+              type="file"
+              name="profilePic"
+              onChange={handleOnChange}
+              accept="image/*"
+              />
+            </Form.Item>
+
+            
             <div className="w-full flex items-start justify-start mt-[-0.15rem]">
               <input type="checkbox" className="w-4 h-4 mr-2 cursor-pointer" />
               <p

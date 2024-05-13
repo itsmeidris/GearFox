@@ -1,8 +1,7 @@
-import React, { useEffect } from "react";
-import Loader from "../components/LandingPageComponents/Loader";
-import Content from "../components/LandingPageComponents/Content";
-import '../style/Loader.css';
-import '../style/Content.css';
+import React, { useEffect } from 'react'
+import HeroSection from '../pages/HeroSection'
+import Loader from '../components/LandingPageComponents/Loader'
+import ProductSection from '../pages/ProductSection';
 
 function LandingPage() {
   useEffect(() => {
@@ -73,29 +72,45 @@ function LandingPage() {
         delay : 3.5
     });
    
-    gsap.from('.header h1' ,{
+    gsap.from('.title h1' ,{
         y : 200,
         ease : 'power4.inOut',
         duration : 1.5,
         delay : 3.75,
         stagger : 0.05
     });
+    gsap.to('.mainContainer' ,{
+      y : 0,
+      ease : 'power4.inOut',
+      duration : 1,
+      delay : 3.75,
+      stagger : 0.05
+  });
 
     gsap.to('.img' ,{
         clipPath: 'polygon(0% 0% ,100% 0% ,100% 100% ,0% 100%)',
         ease : 'power4 .inOut',
         duration : 1.5,
-        delay : 4.5,
+        delay : 6.5,
         stagger : 0.25
     });
+
+    gsap.from('.marquee' ,{
+      y : 200,
+      ease : 'power4.inOut',
+      duration : 1.5,
+      delay : 3.75,
+      stagger : 0.05
+  });
   }, []);
   
   return (
     <>
       <Loader/>
-      <Content/>
+      <HeroSection/>
+      <ProductSection/>
     </>
-  );
+  )
 }
 
-export default LandingPage;
+export default LandingPage
