@@ -18,14 +18,13 @@
 } 
 .title h1{
     flex: 1;
-    font-size: 17vw;
+    font-size: 12.75vw;
     font-weight: 500;
     line-height: 1;
     text-align: center;
     justify-content: center;
     align-items: center;
     z-index: 3;
-    text-shadow: 3px 4px 4px #FFFFE3;
 }
 .title2 h1{
     flex: 1;

@@ -1,10 +1,10 @@
 import React from 'react'
 import '../style/Content.css';
-import ProductsSlider from '../LandingPageComponents/ProductsSlider';
+// import ProductsSlider from '../LandingPageComponents/ProductsSlider';
 function HeroSectionBody() {
   return (
     <div className='bg-myBlack mainContainer z-5 relative'>
-      <div className="title font-chillax text-myWhite px-4 flex z-5 border-2 border-myWhite">
+      <div className="title font-panchang text-myWhite px-4 flex z-5 border-2 border-myWhite">
         <h1>G</h1>
         <h1>E</h1>
         <h1>A</h1>
@@ -22,9 +22,9 @@ function HeroSectionBody() {
           </div>
         </div>
         <div className="footer-nav">
-          <div className="img p-4 relative z-[4] w-full h-auto">
+          {/* <div className="img p-4 relative z-[4] w-full h-auto">
             <ProductsSlider/>
-          </div>
+          </div> */}
         </div>
       </div>
     </div>

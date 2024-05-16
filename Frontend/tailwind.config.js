@@ -13,11 +13,9 @@ export default {
       colors :{
         'myWhite' : "#FFFFE3",
         "myBlack" : "#10100E",
-        "myRed" : '#ED1D24'
+        "myRed" : '#ED1D24',
+        "myGrey" : '#E4E1E5'
       }
     },
-  },
-  plugins: [
-    require('daisyui'),
-  ],
+  }
 };
