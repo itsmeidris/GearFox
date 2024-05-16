@@ -2,6 +2,7 @@ import React, { useEffect } from 'react'
 import Loader from '../components/LandingPageComponents/Loader'
 import HeroSection from '../pages/LandingPagePages/HeroSection'
 import ProductsShowcase from '../components/LandingPageComponents/ProductsShowcase';
+import ProductSection from '../pages/LandingPagePages/ProductSection';
 
 
 
@@ -110,7 +111,7 @@ function LandingPage() {
     <>
       <Loader/>
       <HeroSection/>
-      <ProductsShowcase/>
+      <ProductSection/>
       {/* <Swiper
         rewind={true}
         navigation={true}

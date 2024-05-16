@@ -4,17 +4,43 @@ const userModel = require('../models/userModel');
 const createSecretToken = require('../utils/secretToken');
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
+const multer = require('multer');
+const {CloudinaryStorage} = require('multer-storage-cloudinary');
+const cloudinary = require('cloudinary').v2;
+require("dotenv").config();
+
+cloudinary.config({
+  cloud_name: process.env.CLOUD_NAME,
+  api_key: process.env.API_KEY,
+  api_secret: process.env.API_SECRET
+});
+
+const storage = new CloudinaryStorage({
+  cloudinary: cloudinary,
+  params: {
+    folder: 'profile_pics', // Folder where the images will be stored in Cloudinary
+    format: async (req, file) => 'png', // Format of the image (you can change it based on your requirements)
+    public_id: (req, file) => file.fieldname + '-' + Date.now()
+  }
+});
+const upload = multer({storage: storage});
 
 const signUp = async (req, res) => {
   try {
-    const { email, password, username, createdAt} = req.body;
-    const existingUser = await userModel.findOne({ email });
+    const { email, password, username ,createdAt} = req.body;
 
+    if(!req.file){
+      return res.status(400).json({message : 'Please upload a profile picture'});
+    }
+
+    const profilePic = req.file.path;
+
+    const existingUser = await userModel.findOne({ email });
     if (existingUser) {
       return res.json({ message: "User already exists." });
     }
 
-    const user = await userModel.create({ email, password, username, createdAt});
+    const user = await userModel.create({ email, password, username, profilePic ,createdAt});
     const token = createSecretToken(user._id);
     
     bcrypt.hash(password, 10, (err, hash) => {
@@ -24,6 +50,7 @@ const signUp = async (req, res) => {
       }
       console.log('Hashed password:', hash);
     });
+    
     await user.save();
 
     res.cookie("token", token, {
@@ -33,6 +60,7 @@ const signUp = async (req, res) => {
     res.status(201).json({
       message: "User signed up successfully",
       success: true,
+      user : {email ,username ,profilePic}
     });
 
   } catch (e) {

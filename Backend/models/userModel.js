@@ -17,6 +17,10 @@ const userSchema = new mongoose.Schema({
       type: String,
       required: [true, "Your password is required"],
     },
+    profilePic : {
+      type: String,
+      required: [true, "Your image is required"],
+    },
     createdAt: {
       type: Date,
       default: new Date(),
@@ -25,7 +29,7 @@ const userSchema = new mongoose.Schema({
       type : Boolean,
       default : false,
       required : false
-    }
+    },
 });
 
 userSchema.pre("save", async function () {
