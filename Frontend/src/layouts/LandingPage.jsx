@@ -1,7 +1,6 @@
 import React, { useEffect } from 'react'
 import Loader from '../components/LandingPageComponents/Loader'
 import HeroSection from '../pages/LandingPagePages/HeroSection'
-import ProductsShowcase from '../components/LandingPageComponents/ProductsShowcase';
 import ProductSection from '../pages/LandingPagePages/ProductSection';
 
 
@@ -112,22 +111,7 @@ function LandingPage() {
       <Loader/>
       <HeroSection/>
       <ProductSection/>
-      {/* <Swiper
-        rewind={true}
-        navigation={true}
-        modules={[Navigation]}
-        className="mySwiper"
-      >
-        <SwiperSlide>Slide 1</SwiperSlide>
-        <SwiperSlide>Slide 2</SwiperSlide>
-        <SwiperSlide>Slide 3</SwiperSlide>
-        <SwiperSlide>Slide 4</SwiperSlide>
-        <SwiperSlide>Slide 5</SwiperSlide>
-        <SwiperSlide>Slide 6</SwiperSlide>
-        <SwiperSlide>Slide 7</SwiperSlide>
-        <SwiperSlide>Slide 8</SwiperSlide>
-        <SwiperSlide>Slide 9</SwiperSlide>
-      </Swiper> */}
+      
     </>
   )
 }
