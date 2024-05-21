@@ -1,10 +1,14 @@
-import React from 'react'
+import React from 'react';
 import '../style/Content.css';
-// import ProductsSlider from '../LandingPageComponents/ProductsSlider';
+import bgVideo from '../../assets/LpageAssets/Videos/bgVid.mp4';
+
 function HeroSectionBody() {
   return (
     <div className='bg-myBlack mainContainer z-5 relative'>
-      <div className="title font-panchang text-myWhite px-4 flex z-5 border-2 border-myWhite">
+      <video playsInline autoPlay muted loop className="bgVid">
+        <source src={bgVideo} type="video/mp4"/>
+      </video>
+      <div className="header font-panchang text-myWhite px-4 flex z-5 border-2 border-myWhite">
         <h1>G</h1>
         <h1>E</h1>
         <h1>A</h1>
@@ -16,9 +20,9 @@ function HeroSectionBody() {
       <div className='description flex items-center w-full h-auto'>
         <div className="footer-copy text-myWhite font-chillax z-10">
           <div className='title2 flex flex-col'>
-          <h1>Ignite Your Ride</h1>
-          <h1>Embrace the Thrill</h1>
-          <h1>Master the Road!</h1>
+            <h1>Ignite Your Ride</h1>
+            <h1>Embrace the Thrill</h1>
+            <h1>Master the Road!</h1>
           </div>
         </div>
         <div className="footer-nav">
@@ -28,7 +32,7 @@ function HeroSectionBody() {
         </div>
       </div>
     </div>
-  )
+  );
 }
 
-export default HeroSectionBody
+export default HeroSectionBody;

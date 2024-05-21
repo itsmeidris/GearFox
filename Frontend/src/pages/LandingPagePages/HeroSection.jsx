@@ -1,6 +1,5 @@
 import React from 'react'
 import HeroSectionHeader from '../../components/LandingPageComponents/HeroSectionHeader'
-// import Marquee from '../components/LandingPageComponents/Marquee'
 import HeroSectionBody from '../../components/LandingPageComponents/HeroSectionBody'
 
 function HeroSection() {
@@ -9,7 +8,6 @@ function HeroSection() {
     <div className='overflow-hidden relative '>
       <HeroSectionHeader/>
       <HeroSectionBody/>
-      {/* <Marquee/> */}
     </div>
   )
 }

@@ -5,8 +5,8 @@ import { useState ,useEffect} from "react";
 import toast, { Toaster } from 'react-hot-toast';
 import { Link ,useNavigate} from "react-router-dom";
 
-// import LoginImage from "../assets/image1.jpg";
-// import GOOGLE_ICON from "../assets/google.png";
+import LoginImage from "../../assets/FormAssets/image1.jpg";
+import GOOGLE_ICON from "../../assets/FormAssets/google.png";
 
 const Login = () => {
   const handleLogin = async (values) => {
@@ -85,7 +85,7 @@ const Login = () => {
         {/* Image */}
         <div className="my-4" style={{ flex: "0 0 50%" }}>
           <img
-            // src={LoginImage}
+            src={LoginImage}
             className="auth-image h-auto w-full rounded-lg"
             alt="Login"
           />
@@ -110,7 +110,7 @@ const Login = () => {
           autoComplete="off">
             {/* Form content */}
             <div className="w-full text-[#060606] font-semibold bg-white my-2.5 border-2 border-bg-stone-500 rounded-md p-1.5 text-center flex items-center justify-center cursor-pointer">
-              {/* <img src={GOOGLE_ICON} className="h-6 mr-2" alt="Google Icon" /> */}
+              <img src={GOOGLE_ICON} className="h-6 mr-2" alt="Google Icon" />
               <p>Sign In with Google</p>
             </div>
             <div className="w-full flex items-center justify-center relative py-2">

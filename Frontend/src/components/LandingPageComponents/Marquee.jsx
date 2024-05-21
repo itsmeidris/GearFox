@@ -1,9 +1,13 @@
 import React, { useEffect } from 'react'
-import helmet from '../LandingPageComponents/LandingPagePics/helmet.png'
-import boots from '../LandingPageComponents/LandingPagePics/boots.png'
-import jackets from '../LandingPageComponents/LandingPagePics/jackets.png'
-import gloves from '../LandingPageComponents/LandingPagePics/gloves.png'
+import helmet from '../../assets/LpageAssets/ProductsIcons/helmet.png'
+import boots from '../../assets/LpageAssets/ProductsIcons/boots.png'
+import jackets from '../../assets/LpageAssets/ProductsIcons/jackets.png'
+import gloves from '../../assets/LpageAssets/ProductsIcons/gloves.png'
 import '../style/Content.css';
+import { GiRubberBoot } from "react-icons/gi";
+import { GiFullMotorcycleHelmet } from "react-icons/gi";
+import { GiSleevelessJacket } from "react-icons/gi";
+
 
 function Marquee() {
     useEffect(() => {
@@ -25,15 +29,19 @@ function Marquee() {
     <div className="marquee">
       <ul className="marquee-content">
         <li>
-          <img src={helmet}/>
+        <GiFullMotorcycleHelmet />
+          {/* <img src={helmet}/> */}
           <h1 className='font-semibold ml-1'>HELMETS</h1>
         </li>
         <li>
-          <img src={jackets}/>
+        <GiSleevelessJacket />
+          {/* <img src={jackets}/> */}
           <h1 className='font-semibold ml-1'>JACKETS</h1>
         </li>
         <li>
-          <img src={boots}/>
+        <GiRubberBoot />
+
+          {/* <img src={boots}/> */}
           <h1 className='font-semibold ml-1'>BOOTS</h1>
         </li>
         <li>

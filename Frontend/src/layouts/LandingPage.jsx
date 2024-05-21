@@ -1,8 +1,9 @@
 import React, { useEffect } from "react";
 import Loader from "../components/LandingPageComponents/Loader";
-import Content from "../components/LandingPageComponents/Content";
-import '../style/Loader.css';
-import '../style/Content.css';
+import '../components/style/Loader.css';
+import '../components/style/Content.css';
+import HeroSection from "../pages/LandingPagePages/HeroSection";
+import ProductSection from "../pages/LandingPagePages/ProductSection";
 
 function LandingPage() {
   useEffect(() => {
@@ -97,7 +98,9 @@ function LandingPage() {
   return (
     <>
       <Loader/>
-      <Content/>
+      <HeroSection/>
+      <ProductSection/>      
+      
     </>
   )
 }

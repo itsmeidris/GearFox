@@ -3,6 +3,8 @@ import axios from "axios";
 import { useState } from "react";
 import toast, { Toaster } from 'react-hot-toast';
 import { Link ,useNavigate } from "react-router-dom";
+import GOOGLE_ICON from "../../assets/FormAssets/google.png";
+import image2 from "../../assets/FormAssets/image2.webp";
 
 const Register = () => {
   const handleRegister = (values) => {
@@ -102,7 +104,7 @@ const handleSuccess = (msg) =>{
           onFinish={handleRegister}
           autoComplete="off">
             <div className="w-full text-[#060606]  font-semibold bg-white my-2.5 border-2 border-bg-stone-500	 rounded-md p-1.5 text-center flex items-center justify-center cursor-pointer">
-              {/* <img src={GOOGLE_ICON} className="h-6 mr-2" /> */}
+              <img src={GOOGLE_ICON} className="h-6 mr-2" />
               <p>Sign Up with Google</p>
             </div>
             <div className="w-full flex items-center justify-center relative py-2">
@@ -228,7 +230,7 @@ const handleSuccess = (msg) =>{
             <Form.Item>
               <div className="my-4">
                 <img
-                  // src={registerImage}
+                  src={image2}
                   className="auth-image h-auto w-full rounded-lg"
                   alt="Register"
                 />
