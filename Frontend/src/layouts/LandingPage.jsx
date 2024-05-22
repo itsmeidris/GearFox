@@ -4,6 +4,7 @@ import '../components/style/Loader.css';
 import '../components/style/Content.css';
 import HeroSection from "../pages/LandingPagePages/HeroSection";
 import ProductSection from "../pages/LandingPagePages/ProductSection";
+import DiscountSection from "../pages/LandingPagePages/DiscountSection";
 
 function LandingPage() {
   useEffect(() => {
@@ -99,7 +100,8 @@ function LandingPage() {
     <>
       <Loader/>
       <HeroSection/>
-      <ProductSection/>      
+      <ProductSection/>   
+      <DiscountSection/>   
       
     </>
   )
