@@ -1,6 +1,6 @@
 import React from 'react'
 import ProductsShowcase from '../../components/LandingPageComponents/ProductsShowcase'
-import Marquee from '../../components/LandingPageComponents/Marquee'
+// import Marquee from '../../components/LandingPageComponents/Marquee'
 
 function ProductSection() {
   return (
@@ -10,7 +10,7 @@ function ProductSection() {
         <h1 className='text-8xl font-chillax font-semibold'>GEARFOX Products</h1>
       </div>
       <ProductsShowcase/>
-      <Marquee/>
+      {/* <Marquee/> */}
     </div>
   )
 }

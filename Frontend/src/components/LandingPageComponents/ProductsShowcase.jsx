@@ -4,11 +4,13 @@ import 'swiper/css';
 import 'swiper/css/navigation';
 import '../../App.css';
 import '../style/productQuality.css';
-import { Navigation ,Autoplay ,Pagination} from 'swiper/modules';
+import { Navigation ,Autoplay ,Pagination ,Parallax} from 'swiper/modules';
 import { productsQualities, jacketImages ,glovesImages ,helmetsImages ,bootsImages} from '../../utils/data.js';
 import ProductQualities from '../../components/LandingPageComponents/ProductQualities';
 import ProductsImage from '../../components/LandingPageComponents/ProductsImage';
 import ProductVariants from '../../components/LandingPageComponents/ProductVariants';
+import '../style/productQuality.css';
+import Marquee from '../LandingPageComponents/Marquee.jsx'
 
 function ProductsShowcase() {
   const [mainJacket, setMainJacket] = useState(jacketImages[0].jacketVariants.img);
@@ -30,10 +32,11 @@ function ProductsShowcase() {
         }}
         navigation={true}
         modules={[Autoplay, Pagination, Navigation]}
-        className="mySwiper border-2 border-myBlack pt-2 pb-2"
+        className="mySwiper relative pt-[2vw] pb-[7vw]"
         >
         <SwiperSlide>
-          <div className='w-full h-fit relative flex flex-wrap justify-between items-center px-8'>
+          <div 
+          className='w-full h-fit relative flex flex-wrap justify-around items-center px-8'>
             <div className='productQuality border-2 border-myBlack w-fit h-auto bg-myWhite rounded-2xl relative'>
               {productsQualities.map((quality, i) => (
                 <ProductQualities 
@@ -45,7 +48,7 @@ function ProductsShowcase() {
               ))}
             </div>
 
-            <div className='productsImages flex flex-row-reverse'>
+            <div className='productsImages flex flex-row-reverse data-swiper-parallax="-200"'>
               {jacketImages.map((pic, i) => (
                 <div key={i}>
                   <div className='flex flex-col h-full justify-around'>
@@ -80,7 +83,7 @@ function ProductsShowcase() {
           </div>
         </SwiperSlide>
         <SwiperSlide>
-          <div className='w-full h-fit relative flex flex-wrap justify-between items-center px-8'>
+          <div className='w-full h-fit relative flex flex-wrap justify-around items-center px-8'>
             <div className='productQuality border-2 border-myBlack w-fit h-auto bg-myWhite rounded-2xl relative'>
               {productsQualities.map((quality, i) => (
                 <ProductQualities 
@@ -129,7 +132,7 @@ function ProductsShowcase() {
 
         </SwiperSlide>
         <SwiperSlide>
-        <div className='w-full h-fit relative flex flex-wrap justify-between items-center px-8'>
+        <div className='w-full h-fit relative flex flex-wrap justify-around items-center px-8'>
             <div className='productQuality border-2 border-myBlack w-fit h-auto bg-myWhite rounded-2xl relative'>
               {productsQualities.map((quality, i) => (
                 <ProductQualities 
@@ -177,7 +180,7 @@ function ProductsShowcase() {
         </div>
         </SwiperSlide>
         <SwiperSlide>
-        <div className='w-full h-fit relative flex flex-wrap justify-between items-center px-8'>
+        <div className='w-full h-fit relative flex flex-wrap justify-around items-center px-8'>
             <div className='productQuality border-2 border-myBlack w-fit h-auto bg-myWhite rounded-2xl relative'>
               {productsQualities.map((quality, i) => (
                 <ProductQualities 
@@ -224,8 +227,8 @@ function ProductsShowcase() {
             </div>
         </div>
         </SwiperSlide>
+        <Marquee/>
       </Swiper>
-      
     </>
   );
 }

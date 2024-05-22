@@ -1,8 +1,8 @@
 import jackeImage from '../assets/LpageAssets/JacketPics/jacket1.png';
 import jackeVar1 from '../assets/LpageAssets/JacketPics/jacket2.png'
 import jackeVar2 from '../assets/LpageAssets/JacketPics/jacket3.png'
-import jackeVar3 from '../assets/LpageAssets/JacketPics/jacket4.png'
-import jackeVar4 from '../assets/LpageAssets/JacketPics/jacket5.png'
+import jackeVar3 from '../assets/LpageAssets/JacketPics/jacket03.png'
+import jackeVar4 from '../assets/LpageAssets/JacketPics/jacket003.png'
 
 import gloveImage from '../assets/LpageAssets/GlovesPics/gloves01.png'
 import gloveVar1 from '../assets/LpageAssets/GlovesPics/gloves03.png'

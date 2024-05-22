@@ -1,6 +1,7 @@
 import React from 'react';
 import '../style/Content.css';
 import bgVideo from '../../assets/LpageAssets/Videos/bgVid.mp4';
+import {Slogan } from './Slogan';
 
 function HeroSectionBody() {
   return (
@@ -8,7 +9,7 @@ function HeroSectionBody() {
       <video playsInline autoPlay muted loop className="bgVid">
         <source src={bgVideo} type="video/mp4"/>
       </video>
-      <div className="header font-panchang text-myWhite px-4 flex z-5 border-2 border-myWhite">
+      <div className="header font-panchang text-myWhite px-4 pt-[12vh] flex z-5 border-2 border-myWhite">
         <h1>G</h1>
         <h1>E</h1>
         <h1>A</h1>
@@ -18,13 +19,14 @@ function HeroSectionBody() {
         <h1>X</h1>
       </div>
       <div className='description flex items-center w-full h-auto'>
-        <div className="footer-copy text-myWhite font-chillax z-10">
+        {/* <div className="footer-copy text-myWhite font-chillax z-10">
           <div className='title2 flex flex-col'>
             <h1>Ignite Your Ride</h1>
             <h1>Embrace the Thrill</h1>
             <h1>Master the Road!</h1>
           </div>
-        </div>
+        </div> */}
+        <Slogan />
         <div className="footer-nav">
           {/* <div className="img p-4 relative z-[4] w-full h-auto">
             <ProductsSlider/>

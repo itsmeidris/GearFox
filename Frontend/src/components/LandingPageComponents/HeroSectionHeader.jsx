@@ -5,7 +5,7 @@ import '../style/Content.css';
 function HeroSectionHeader() {
   return (
     <>
-      <header className='myHeader flex justify-between items-center w-10/12 p-4 fixed z-20 '>
+      <header className='myHeader flex justify-between items-center w-10/12 p-4 fixed z-10 mx-auto'>
         <div className="logo">
           <a href="/" className='text-myWhite font-panchang bodrer-2 border-myWhite'>GEARFOX</a>
         </div>

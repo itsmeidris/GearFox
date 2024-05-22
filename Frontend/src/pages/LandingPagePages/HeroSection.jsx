@@ -5,7 +5,7 @@ import HeroSectionBody from '../../components/LandingPageComponents/HeroSectionB
 function HeroSection() {
   
   return (
-    <div className='overflow-hidden relative '>
+    <div className='overflow-hidden relative'>
       <HeroSectionHeader/>
       <HeroSectionBody/>
     </div>
