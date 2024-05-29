@@ -1,10 +1,8 @@
 .myHeader{
   background: rgba( 0, 0, 0, 0.7 );
   backdrop-filter: blur( 10px );
-  border-bottom-left-radius: 30px;
-  border-bottom-right-radius: 30px;
-  margin: 0 auto;
-
+  border-bottom-left-radius: 20px;
+  border-bottom-right-radius: 20px;
 }
 .mainContainer::before {
   position: absolute;

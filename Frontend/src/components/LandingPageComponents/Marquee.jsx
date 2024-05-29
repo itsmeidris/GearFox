@@ -40,7 +40,6 @@ function Marquee() {
         </li>
         <li>
         <GiRubberBoot />
-
           {/* <img src={boots}/> */}
           <h1 className='font-semibold ml-1'>BOOTS</h1>
         </li>

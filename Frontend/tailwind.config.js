@@ -11,7 +11,7 @@ export default {
         image: "url('src/assets/LandingPage-img/imgmotor.webp')",
       },
       colors :{
-        'myWhite' : "#FFFF",
+        'myWhite' : "#F8F8FF",
         "myBlack" : "#10100E",
         "myRed" : '#ED1D24',
         "myGrey" : '#E4E1E5'

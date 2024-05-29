@@ -4,7 +4,7 @@ import 'swiper/css';
 import 'swiper/css/navigation';
 import '../../App.css';
 import '../style/productQuality.css';
-import { Navigation ,Autoplay ,Pagination ,Parallax} from 'swiper/modules';
+import { Navigation ,Autoplay ,Pagination} from 'swiper/modules';
 import { productsQualities, jacketImages ,glovesImages ,helmetsImages ,bootsImages} from '../../utils/data.js';
 import ProductQualities from '../../components/LandingPageComponents/ProductQualities';
 import ProductsImage from '../../components/LandingPageComponents/ProductsImage';

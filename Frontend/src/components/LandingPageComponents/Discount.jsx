@@ -1,18 +1,16 @@
 import React from "react";
 import { BentoGrid, BentoGridItem } from "../../components/LandingPageComponents/BentoGrid";
-import {
-  IconArrowWaveRightUp,
-  IconBoxAlignRightFilled,
-  IconBoxAlignTopLeft,
-  IconClipboardCopy,
-  IconFileBroken,
-  IconSignature,
-  IconTableColumn,
-} from "@tabler/icons-react";
+import model1 from '../../assets/LpageAssets/ModelsPics/model1.jpg';
+import model2 from '../../assets/LpageAssets/ModelsPics/model2.jpg';
+import model3 from '../../assets/LpageAssets/ModelsPics/model3.jpg';
+import model4 from '../../assets/LpageAssets/ModelsPics/model4.jpg';
+import model5 from '../../assets/LpageAssets/ModelsPics/model5.jpg';
+import model6 from '../../assets/LpageAssets/ModelsPics/model6.jpg';
+import model7 from '../../assets/LpageAssets/ModelsPics/model7.jpeg';
 
 export function Discount() {
   return (
-    <BentoGrid className="max-w-4xl mx-auto">
+    <BentoGrid className="max-w-full mx-0 text-left">
       {items.map((item, i) => (
         <BentoGridItem
           key={i}
@@ -26,51 +24,55 @@ export function Discount() {
     </BentoGrid>
   );
 }
-const Skeleton = () => (
-  <div className="flex flex-1 w-full h-full min-h-[6rem] rounded-xl bg-gradient-to-br from-neutral-200 dark:from-neutral-900 dark:to-neutral-800 to-neutral-100"></div>
+const Skeleton = ({imgSrc}) => (
+  <div 
+  className="bg-cover bg-center bg-no-repeat bg-myGrey w-full h-full rounded-md"
+  style={{ backgroundImage: `url(${imgSrc})` }}
+  ></div>
 );
 const items = [
   {
-    title: "The Dawn of Innovation",
-    description: "Explore the birth of groundbreaking ideas and inventions.",
-    header: <Skeleton />,
-    icon: <IconClipboardCopy className="h-4 w-4 text-neutral-500" />,
+    title: "Helmet Heaven",
+    description: "Get 20% off on all motorcycle jackets. Ride in style and safety.",
+    header: <Skeleton imgSrc={model2} />,
+    icon: <h1 className="bg-myRed text-myWhite inline-block px-2 rounded-md">-20%</h1>,
   },
   {
-    title: "The Digital Revolution",
-    description: "Dive into the transformative power of technology.",
-    header: <Skeleton />,
-    icon: <IconFileBroken className="h-4 w-4 text-neutral-500" />,
+    title: "Boots Bonanza",
+    description: "Step into comfort with 15% off on all motorcycle boots. Offer ends soon!",
+    header: <Skeleton imgSrc={model7} />,
+    icon: <h1 className="bg-myRed text-myWhite inline-block px-2 rounded-md">-20%</h1>,
   },
   {
-    title: "The Art of Design",
-    description: "Discover the beauty of thoughtful and functional design.",
-    header: <Skeleton />,
-    icon: <IconSignature className="h-4 w-4 text-neutral-500" />,
+    title: "Accessorize and Save",
+    description: "Protect your hands with 10% off on all gloves. Perfect for every ride.",
+    header: <Skeleton imgSrc={model3} />,
+    icon: <h1 className="bg-myRed text-myWhite inline-block px-2 rounded-md">-20%</h1>,
   },
   {
-    title: "The Power of Communication",
-    description:
-      "Understand the impact of effective communication in our lives.",
-    header: <Skeleton />,
-    icon: <IconTableColumn className="h-4 w-4 text-neutral-500" />,
+    // title: "Helmet Heaven",
+    title: "Seasonal Specials",
+    description: "Stay safe with 25% off on all helmets. Best protection, best price.",
+    header: <Skeleton imgSrc={model4} />,
+    icon: <h1 className="bg-myRed text-myWhite inline-block px-2 rounded-md">-20%</h1>,
   },
   {
-    title: "The Pursuit of Knowledge",
-    description: "Join the quest for understanding and enlightenment.",
-    header: <Skeleton />,
-    icon: <IconArrowWaveRightUp className="h-4 w-4 text-neutral-500" />,
+    title: "Gloves Galore",
+    description: "Extra 5% off on any complete set of jacket, boots, gloves, and helmet.",
+    header: <Skeleton imgSrc={model5} />,
+    icon: <h1 className="bg-myRed text-myWhite inline-block px-2 rounded-md">-20%</h1>,
   },
   {
-    title: "The Joy of Creation",
-    description: "Experience the thrill of bringing ideas to life.",
-    header: <Skeleton />,
-    icon: <IconBoxAlignTopLeft className="h-4 w-4 text-neutral-500" />,
+    // title: "Accessorize and Save",
+    title: "Complete Your Look",
+    description: "10% off on all motorcycle accessories. Enhance your ride.",
+    header: <Skeleton imgSrc={model1}/>,
+    icon: <h1 className="bg-myRed text-myWhite inline-block px-2 rounded-md">-20%</h1>,
   },
   {
-    title: "The Spirit of Adventure",
-    description: "Embark on exciting journeys and thrilling discoveries.",
-    header: <Skeleton />,
-    icon: <IconBoxAlignRightFilled className="h-4 w-4 text-neutral-500" />,
+    title: "Gear Up with Savings!",
+    description: "Exclusive seasonal discounts on select gear. Limited time offer!",
+    header: <Skeleton imgSrc={model6} />,
+    icon: <h1 className="bg-myRed text-myWhite inline-block px-2 rounded-md">-20%</h1>,
   },
 ];

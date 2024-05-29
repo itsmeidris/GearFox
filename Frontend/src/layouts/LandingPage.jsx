@@ -5,6 +5,8 @@ import '../components/style/Content.css';
 import HeroSection from "../pages/LandingPagePages/HeroSection";
 import ProductSection from "../pages/LandingPagePages/ProductSection";
 import DiscountSection from "../pages/LandingPagePages/DiscountSection";
+import TestimonialsSections from "../pages/LandingPagePages/TestimonialsSections";
+import FooterSection from "../pages/LandingPagePages/FooterSection";
 
 function LandingPage() {
   useEffect(() => {
@@ -80,20 +82,28 @@ function LandingPage() {
     });
    
     gsap.from('.header h1' ,{
-        y : 200,
-        ease : 'power4.inOut',
-        duration : 1.5,
-        delay : 3.75,
-        stagger : 0.05
+        // y : 200,
+        // ease : 'power4.inOut',
+        // duration : 1.5,
+        // delay : 3.75,
+        // stagger : 0.05
     });
 
     gsap.to('.img' ,{
         clipPath: 'polygon(0% 0% ,100% 0% ,100% 100% ,0% 100%)',
-        ease : 'power4 .inOut',
-        duration : 1.5,
-        delay : 4.5,
-        stagger : 0.25
+        // ease : 'power4 .inOut',
+        // duration : 1.5,
+        // delay : 6,
+        // stagger : 0.25
     });
+    gsap.to('.img2' ,{
+      clipPath: 'polygon(0% 0% ,100% 0% ,100% 100% ,0% 100%)',
+      // ease : 'power4 .inOut',
+      // duration : 1.5,
+      // delay : 7,
+      // stagger : 0.25
+    }
+  );
   }, []);
 
   return (
@@ -102,6 +112,8 @@ function LandingPage() {
       <HeroSection/>
       <ProductSection/>   
       <DiscountSection/>   
+      <TestimonialsSections/>
+      <FooterSection/>
       
     </>
   )
