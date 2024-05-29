@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react'
-import helmet from '../../assets/LpageAssets/ProductsIcons/helmet.png'
-import boots from '../../assets/LpageAssets/ProductsIcons/boots.png'
-import jackets from '../../assets/LpageAssets/ProductsIcons/jackets.png'
+// import helmet from '../../assets/LpageAssets/ProductsIcons/helmet.png'
+// import boots from '../../assets/LpageAssets/ProductsIcons/boots.png'
+// import jackets from '../../assets/LpageAssets/ProductsIcons/jackets.png'
 import gloves from '../../assets/LpageAssets/ProductsIcons/gloves.png'
 import '../style/Content.css';
 import { GiRubberBoot } from "react-icons/gi";

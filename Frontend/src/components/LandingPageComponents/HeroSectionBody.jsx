@@ -1,10 +1,10 @@
 import React from 'react';
 import '../style/Content.css';
 import bgVideo from '../../assets/LpageAssets/Videos/bgVid.mp4';
-import {Slogan } from './Slogan';
-import img1 from '../../assets/LpageAssets/bgGears.jpeg';
-import img2 from '../../assets/LpageAssets/bgGears2.jpg';
-import { Link } from 'react-router-dom';
+// import {Slogan } from './Slogan';
+// import img1 from '../../assets/LpageAssets/bgGears.jpeg';
+// import img2 from '../../assets/LpageAssets/bgGears2.jpg';
+// import { Link } from 'react-router-dom';
 
 function HeroSectionBody() {
   return (
